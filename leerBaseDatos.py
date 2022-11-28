@@ -23,16 +23,12 @@ db = firebase.database()
 #solo el numero del apartado de test
 all_users = db.child("test").get()
 for users in all_users.each():
-    print(users.key())
-    print(users.val())
+    print(users.key()) #Imprime el nombre de la etiqueta del sensor la firebase
+    print(users.val()) #Imprime el valor de la variable del sensor
     if users.key() == "numero":
 
 #Se crea una condición para que si el usuario inserta un número mayor a nueve, se muestre el siguiente mensaje en la firebase
-#en el apartado de nombre y en la MIT se mostrará en un mensaje abajo de las lecturas de digito y nombre            
+#en el apartado de nombre y la app leerá nuevamente el usuario haciendo que se muestre en un mensaje en el "usuario:"           
       if int(users.val()) > 9:
             db.child("test").update({"usuario":"Elemento_mayor_a_9"})
             print("Data updated successfully ")
- #Se imprimen finalmente todos los datos de los sensores del apartado test de la firebase
-print(users.key())
-print(users.val())
-        
